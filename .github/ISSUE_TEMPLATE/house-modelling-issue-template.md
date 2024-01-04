@@ -2,7 +2,7 @@
 name: House modelling issue template
 about: Template about house modelling
 title: "[----] street [----] building"
-labels: ''
+labels: enhancement
 assignees: ''
 
 ---
