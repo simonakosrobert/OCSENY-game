@@ -19,15 +19,20 @@ public class LightFlickering : MonoBehaviour
     void Update()
     {
         randomNum = Random.value;
-        if (randomNum < flickerChance)
+
+        if (FPSController.circuitBreakerOn)
         {
-            GetComponent<Light>().enabled = false;
-            _lamp.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            if (randomNum < flickerChance)
+            {
+                GetComponent<Light>().enabled = false;
+                _lamp.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            }
+            else
+            {
+                GetComponent<Light>().enabled = true;
+                _lamp.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            }
         }
-        else
-        {
-            GetComponent<Light>().enabled = true;
-            _lamp.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-        }
+        
     }
 }
